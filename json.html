@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+    <title>Json</title>
+</head>
+<body>
+    
+    <div class="container">
+        <div class="col-12">
+            <table class="table table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">Status</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Nome Motorista</th>
+                    <th scope="col">Endereço</th>
+                    <th scope="col">N° Pedido</th>
+                  </tr>
+                </thead>
+                <tbody id="tbory">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+
+    <script>
+
+            $.getJSON("json.json", function (data) {
+                $.each(data, function(i, item) {
+                    item.forEach(i => {
+                        var tr = 
+                            "<tr>" + 
+                                "<td>" + i.status + "</td>" + 
+                                "<td>" + i.dataEntrega + "</td>" + 
+                                "<td>" + i.nome + "</td>" + 
+                                "<td>" + i.endereco + "</td>" + 
+                                "<td>" + i.numeroPedido + "</td>" + 
+                            "</tr>";
+                        $('#tbory').append(tr);
+                    });
+                });
+            });
+
+    </script>
+</body>
+</html>
